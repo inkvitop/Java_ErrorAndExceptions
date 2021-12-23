@@ -1,4 +1,4 @@
-package students;
+package student;
 
 import storage.Storage;
 
@@ -9,8 +9,8 @@ public class Student {
 
     String studentName;
     String studentFaculty;
+    String studentGroup;
     Map<String, Integer> studentLessons;
-
 
     public Student() {
         studentName = generateName();
@@ -21,7 +21,6 @@ public class Student {
         String firstName = storage.getFirstNameArray()[randomFirstNameIndex];
         int randomLastNameIndex = (int) (Math.floor(Math.random() * (storage.getLastNameArray().length)) + 0);
         String lastName = storage.getLastNameArray()[randomLastNameIndex];
-
         return firstName + "_" + lastName;
     }
 
@@ -45,11 +44,20 @@ public class Student {
         return studentName;
     }
 
+    public String getStudentGroup() {
+        return studentGroup;
+    }
+
+    public void setStudentGroup(String studentGroup) {
+        this.studentGroup = studentGroup;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
-                "studentName='" + studentName + '\'' +
+                ", studentName='" + studentName + '\'' +
                 ", studentFaculty='" + studentFaculty + '\'' +
+                ", studentGroup='" + studentGroup + '\'' +
                 ", studentLessons=" + studentLessons +
                 '}';
     }

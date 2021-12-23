@@ -1,6 +1,7 @@
 package faculty;
 
-import students.Student;
+import exceptions.MissFacultyInTheUniversityException;
+import student.Student;
 
 import java.util.List;
 
@@ -11,8 +12,16 @@ public class TheatreFaculty {
     List<Student> groupB;
 
     public TheatreFaculty() {
-        groupA = facultyActions.studentsByFaculty("Theatre_Faculty");
-        groupB = facultyActions.studentsByFaculty("Theatre_Faculty");
+        try {
+            groupA = facultyActions.studentsByFaculty("Theatre_Faculty", "A");
+        } catch (MissFacultyInTheUniversityException e) {
+            e.printStackTrace();
+        }
+        try {
+            groupB = facultyActions.studentsByFaculty("Theatre_Faculty", "B");
+        } catch (MissFacultyInTheUniversityException e) {
+            e.printStackTrace();
+        }
         groupA = facultyActions.enrollmentAcademicSubjectsToTheStudent(groupA);
         groupB = facultyActions.enrollmentAcademicSubjectsToTheStudent(groupB);
     }

@@ -1,13 +1,20 @@
 package university;
 
-import students.Student;
-
-import java.util.List;
+import faculty.ArtFaculty;
+import faculty.FacultyOfScreenArts;
+import faculty.TheatreFaculty;
+import storage.Storage;
 
 public class University {
-    public List<Student> allUniversityStudents;
+    Storage storage = new Storage();
 
     public University() {
-        allUniversityStudents = UniversityActions.universityRecruitment();
+        storage.setAllUniversityStudents(UniversityActions.universityRecruitment());
+    }
+
+    public void initializeFaculties() {
+        new ArtFaculty();
+        new FacultyOfScreenArts();
+        new TheatreFaculty();
     }
 }
